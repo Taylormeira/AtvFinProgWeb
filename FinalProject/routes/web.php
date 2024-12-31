@@ -9,5 +9,5 @@ Route::get('/', function () {
 
 /*Routes to events*/
 Route::get( '/events', [ EventController::class, 'index' ] );
-
+Route::get( '/events/create', [ EventController::class, 'create' ] );
 
