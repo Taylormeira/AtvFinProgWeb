@@ -10,24 +10,31 @@ use App\Models\Category;
 class EventController extends Controller
 {
     public function index() {
-        $events = Event::all();
+        $events = Event::join('categories', 'events.category_id', '=', 'categories.id') 
+        -> select('events.*', 'categories.name as category_name')
+        -> get();
+        
         return view('events.index', compact('events'));
     }
 
     public function create(){
         $categories = Category::all();
 
-        return view ('events.create');
+        return view ('events.create', compact('categories'));
     } 
     
     public function store(Request $request){
-        $category = new Event();
+        $event = new Event();
 
-        $category->name = $request->name;
-        $category->description = $request->description;
+        $event->name = $request->name;
+        $event->description = $request->description;
+        $event->location = $request->location;
+        $event->date = $request->date;
+        $event->category_id = $request->category_id;
 
-        $category->save();
 
-        return redirect('categories')->with( 'msg', 'Categoria criada com sucesso!' );
+        $event->save();
+
+        return redirect('events')->with( 'msg', 'Evento criado com sucesso!' );
     }
 }

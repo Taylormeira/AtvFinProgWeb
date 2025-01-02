@@ -6,7 +6,7 @@
 <div class=" d-flex justify-content-between align-items-center ">
     <h1>Lista de Eventos</h1>
 
-    <a href="/categories/create" type="button" class="btn btn-primary">
+    <a href="/events/create" type="button" class="btn btn-primary">
         <i class="bi bi-plus-square"></i>
         <span>Novo Evento</span>
     </a>
@@ -21,6 +21,7 @@
             <th>Descricao</th>
             <th>Localização</th>
             <th>Data</th>
+            <th>Categoria</th>
         </tr>
     </thead>
     <tbody>
@@ -32,17 +33,18 @@
             <td>{{$event->description }}</td>
             <td>{{$event->location }}</td>
             <td>{{$event->date }}</td>
+            <td>{{$event->category_name }}</td>
             <td>
-                <a class="btn btn-primary" href="/categories/edit/{{$category->id}}">
+                <a class="btn btn-primary" href="/events/edit/{{$event->id}}">
                     <i class="bi bi-pencil-square"></i>
                 </a>
             </td>
             <td>
-                <form action="/categories/{{$category->id}}" method="post">
+                <form action="/events/{{$event->id}}" method="post">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger"
-                        onclick="return confirm('Tem certeza que deseja excluir a categoria?')">
+                        onclick="return confirm('Tem certeza que deseja excluir o evento?')">
                         <i class="bi bi-trash"></i>
                     </button>
                 </form>
