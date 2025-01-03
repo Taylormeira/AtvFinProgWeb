@@ -37,4 +37,22 @@ class EventController extends Controller
 
         return redirect('events')->with( 'msg', 'Evento criado com sucesso!' );
     }
+
+    public function destroy($id){
+        Event::findOrFail($id)->delete();
+        
+        return redirect('/events') -> with('msg', 'Evento deletado com sucesso');
+    }
+    public function edit($id){
+        $categories = Category::all();
+
+        $event = Event::findOrFail($id);
+        return view('/events.edit', ['event'=> $event,'categories' => $categories]);
+    }
+
+    public function update( Request $request){
+        Event::findOrFail($request->id )->update($request->all());
+        
+        return redirect('/events')->with('msg', 'Evento editado com sucesso');
+    }
 }
