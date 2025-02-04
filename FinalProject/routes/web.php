@@ -14,7 +14,6 @@ Route::get( '/categories', [ CategoryController::class, 'index' ] );
 Route::get( '/categories/create', [ CategoryController::class, 'create' ] );
 Route::get( '/categories/edit/{id}', [ CategoryController::class, 'edit' ] );
 
-
 Route::post( '/categories', [ CategoryController::class, 'store' ] );
 
 Route::delete( '/categories/{id}', [ CategoryController::class, 'destroy' ] );
@@ -39,6 +38,6 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+        return view('Welcome');
+    })->name('Welcome');
 });

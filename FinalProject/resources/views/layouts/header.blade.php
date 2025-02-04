@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="/">Navbar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -18,6 +18,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/events">Eventos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/participants">Seus eventos</a>
                     </li>
                     <li class="nav-item">
                         <form action="/logout" method="post">
