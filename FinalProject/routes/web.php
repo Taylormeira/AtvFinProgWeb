@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\ParcipantsController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,6 +32,12 @@ Route::post( '/events', [ EventController::class, 'store' ] );
 Route::delete( '/events/{id}', [ EventController::class, 'destroy' ] );
 
 Route::put( '/events/update/{id}', [ EventController::class, 'update' ] );
+
+/*Routes do Participants*/
+Route::get('/participants', [ ParcipantsController::class, 'index']);
+Route::get( '/participants/create', [ ParcipantsController::class, 'create' ] );
+
+Route::post( '/participants', [ ParcipantsController::class, 'store' ] );
 
 /*Routes to Authentication */
 Route::middleware([
