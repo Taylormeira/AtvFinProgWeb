@@ -16,24 +16,24 @@
 <table class="table">
     <thead>
         <tr>
-            <th>ID Relacionamento</th>
             <th>ID Evento</th>
-            <th>Id usuário</th>
+            <th>Nome Evento</th>
+            <th>Usuário usuário</th>
         </tr>
     </thead>
     <tbody>
         @foreach($participants as $participant)
         <tr>
-            <td>{{$participant->id }}</td>
-            <td>{{$participant->event_id }}</td>
-            <td>{{$participant->user_id }}</td>
+            <td>{{ $participant->event_id }}</td>
+            <td>{{ $participant->event_name }}</td>
+            <td>{{ $participant->user_name }}</td>
             <td>
-                <a class="btn btn-primary" href="/participants/edit/{{$participants->id}}">
+                <a class="btn btn-primary" href="/participants/edit/{{ $participant->id }}">
                     <i class="bi bi-pencil-square"></i>
                 </a>
             </td>
             <td>
-                <form action="/participants/{{$participants->id}}" method="post">
+                <form action="/participants/{{ $participant->id }}" method="post">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger"
@@ -42,10 +42,10 @@
                     </button>
                 </form>
             </td>
-
         </tr>
         @endforeach
     </tbody>
+
 </table>
 
 @endsection
