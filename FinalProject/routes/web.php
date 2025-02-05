@@ -36,8 +36,13 @@ Route::put( '/events/update/{id}', [ EventController::class, 'update' ] );
 /*Routes do Participants*/
 Route::get('/participants', [ ParcipantsController::class, 'index']);
 Route::get( '/participants/create', [ ParcipantsController::class, 'create' ] );
+Route::get( '/participants/edit/{id}', [ ParcipantsController::class, 'edit' ] );
 
 Route::post( '/participants', [ ParcipantsController::class, 'store' ] );
+
+Route::delete( '/participants/{id}', [ ParcipantsController::class, 'destroy' ] );
+
+Route::put( '/participants/update/{id}', [ ParcipantsController::class, 'update' ] );
 
 /*Routes to Authentication */
 Route::middleware([

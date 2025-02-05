@@ -19,6 +19,7 @@
             <th>ID Evento</th>
             <th>Nome Evento</th>
             <th>Usuário usuário</th>
+            <th>Data de Insclussão</th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +28,8 @@
             <td>{{ $participant->event_id }}</td>
             <td>{{ $participant->event_name }}</td>
             <td>{{ $participant->user_name }}</td>
+            <td>{{ $participant->crated_at }}</td>
+
             <td>
                 <a class="btn btn-primary" href="/participants/edit/{{ $participant->id }}">
                     <i class="bi bi-pencil-square"></i>

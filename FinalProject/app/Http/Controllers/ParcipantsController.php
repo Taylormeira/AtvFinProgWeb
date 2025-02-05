@@ -30,10 +30,30 @@ class ParcipantsController extends Controller
 
         $participant->event_id = $request->event_id;
         $participant->user_id = $request->user_id;
-
+        $participant->created_at = now();
 
         $participant->save();
 
         return redirect('participants')->with( 'msg', 'Evento relacionado com sucesso!' );
     }
+
+    public function destroy($id){
+        Participant::findOrFail($id)->delete();
+        
+        return redirect('/participants') -> with('msg', 'Evento deletado com sucesso');
+    }
+    public function edit($id){
+        $events = Event::all();
+        $users = User::all();
+
+        $participant = Participant::findOrFail($id);
+        return view('/participants.edit', ['participant'=> $participant,'events' => $events, 'users' => $users]);
+    }
+
+    public function update( Request $request){
+        Participant::findOrFail($request->id )->update($request->all());
+        
+        return redirect('/participants')->with('msg', 'Evento editado com sucesso');
+    }
+
 }
