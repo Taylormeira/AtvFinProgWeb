@@ -55,4 +55,21 @@ class EventController extends Controller
         
         return redirect('/events')->with('msg', 'Evento editado com sucesso');
     }
+
+    public function home(){
+        $events = Event::orderBy('created_at', 'desc')
+            ->take(4)
+            ->get();
+
+        return view('welcome', compact('events'));
+    }
+
+    public function show($id){
+        $event = Event::findOrFail($id)
+        -> join('categories', 'events.category_id', '=', 'categories.id') 
+        -> select('events.*', 'categories.name as category_name')
+        -> first();
+
+        return view('/events.show', ['event'=> $event]);
+    }
 }

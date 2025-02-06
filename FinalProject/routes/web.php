@@ -6,10 +6,9 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\ParcipantsController;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [EventController::class, 'home']);
 
+Route::get('/about', function () {return view('about');});
 
 /*Routes to Category*/
 Route::get( '/categories', [ CategoryController::class, 'index' ] );
@@ -26,6 +25,7 @@ Route::put( '/categories/update/{id}', [ CategoryController::class, 'update' ] )
 Route::get( '/events', [ EventController::class, 'index' ] );
 Route::get( '/events/create', [ EventController::class, 'create' ] );
 Route::get( '/events/edit/{id}', [ EventController::class, 'edit' ] );
+Route::get( '/events/{id}', [ EventController::class, 'show' ] );
 
 Route::post( '/events', [ EventController::class, 'store' ] );
 

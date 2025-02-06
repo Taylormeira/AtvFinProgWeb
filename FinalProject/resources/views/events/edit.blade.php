@@ -44,7 +44,7 @@
     </div>
  
     <div class="form-group">
-        <a href="/tasks" class="btn btn-secondary">Cancelar</a>
+        <a href="/event" class="btn btn-secondary">Cancelar</a>
         <button type="submit" class="btn btn-primary">Cadastrar</button>
     </div>
 </form>
