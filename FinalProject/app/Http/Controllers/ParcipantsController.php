@@ -7,15 +7,36 @@ use App\Models\Participant;
 use App\Models\Event;
 use App\Models\User;
 
+use Illuminate\Support\Facades\Auth;
+
 class ParcipantsController extends Controller
 {
     public function index() {
+        $user = Auth::id();   // Obtém o usuário autenticado
+
+        if ($user) {
+        
+            $participants = Participant::join('events', 'participants.event_id', '=', 'events.id')
+                ->join('users', 'participants.user_id', '=', 'users.id')
+                ->where('participants.user_id', $user)  // Filtra os participantes do usuário logado
+                ->select('participants.*', 'events.name as event_name', 'users.name as user_name')
+                ->get();
+        
+            return view('participants.index', compact('participants'));
+         } else {
+                // Caso o usuário não esteja autenticado
+                // Exemplo de redirecionamento ou erro
+                return redirect()->route('login');
+            }
+            
+            /*
         $participants = Participant::join('events', 'participants.event_id', '=', 'events.id')
         ->join('users', 'participants.user_id', '=', 'users.id')
+        ->where('participants.user_id', auth()->id())
         ->select('participants.*', 'events.name as event_name', 'users.name as user_name')
         ->get();
     
-    return view('participants.index', compact('participants'));
+    return view('participants.index', compact('participants'));*/
     
     }
     public function create(){
