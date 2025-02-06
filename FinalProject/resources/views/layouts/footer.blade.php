@@ -4,7 +4,7 @@
             <ul style="list-style: none; padding: 0;">
                 <li style="display: inline; margin: 0 15px;"><a href="{{ url('/') }}"
                         style=" text-decoration: none;">Home</a></li>
-                <li style="display: inline; margin: 0 15px;"><a href="{{ url('/sobre') }}"
+                <li style="display: inline; margin: 0 15px;"><a href="{{ url('/about') }}"
                         style="text-decoration: none;">Sobre Nós</a></li>
             </ul>
         </nav>
