@@ -50,7 +50,5 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('Welcome');
-    })->name('Welcome');
+    Route::get('/', [EventController::class, 'home']);
 });

@@ -32,7 +32,7 @@
             <td>{{$event->name }}</td>
             <td>{{$event->description }}</td>
             <td>{{$event->location }}</td>
-            <td>{{$event->date }}</td>
+            <td>{{\Carbon\Carbon::parse($event->date)->format('d/m/Y')}}</td>
             <td>{{$event->category_name }}</td>
             <td>
                 <a class="btn btn-primary" href="/events/edit/{{$event->id}}">

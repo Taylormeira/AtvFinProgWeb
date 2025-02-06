@@ -28,7 +28,7 @@
             <td>{{ $participant->event_id }}</td>
             <td>{{ $participant->event_name }}</td>
             <td>{{ $participant->user_name }}</td>
-            <td>{{ $participant->crated_at }}</td>
+            <td>{{\Carbon\Carbon::parse($participant->dreated_at)->format('d/m/Y') }}</td>
 
             <td>
                 <a class="btn btn-primary" href="/participants/edit/{{ $participant->id }}">
